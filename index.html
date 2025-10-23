@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>William Winterflood – CV / Portfolio</title>
+  <meta name="description" content="Personal CV website" />
+  <style>
+    :root{
+      --bg:#0f1115;          /* page background */
+      --panel:#161920;       /* card background */
+      --text:#e6e7ea;        /* primary text */
+      --muted:#a7adb8;       /* secondary text */
+      --accent:#6ee7ff;      /* links & highlights */
+      --radius:16px;         /* rounded corners */
+      --shadow:0 6px 24px rgba(0,0,0,.35);
+      --speed:400ms;         /* animation speed */
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6f7fb; --panel:#ffffff; --text:#1a1f2b; --muted:#556;
+             --accent:#0ea5e9; --shadow:0 6px 20px rgba(0,0,0,.08);} }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0; font: 16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg); color: var(--text);
+    }
+
+    .wrap{ max-width: 840px; margin: 48px auto; padding: 0 16px; }
+
+    header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
+    .name{ font-weight: 700; letter-spacing:.5px; font-size: 20px; }
+
+    .icons{ display:flex; gap:10px; align-items:center; }
+    .icon{ display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:999px; background:var(--panel); box-shadow: var(--shadow); transition: transform var(--speed), filter var(--speed); }
+    .icon:hover{ transform: translateY(-3px); filter: brightness(1.1); }
+    .icon svg{ width:18px; height:18px; fill: var(--text); }
+
+    .card{ background: var(--panel); border-radius: var(--radius); box-shadow: var(--shadow); overflow:hidden; }
+
+    details{ border-top: 1px solid rgba(255,255,255,.06); }
+    details:first-of-type{ border-top: none; }
+    summary{
+      list-style:none; cursor:pointer; padding:16px 18px; font-weight:600; letter-spacing:.3px; position:relative;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    /* caret */
+    summary:after{ content:"▸"; position:absolute; right:16px; transition: transform var(--speed); opacity:.7; }
+    details[open] summary:after{ transform: rotate(90deg); }
+
+    /* animated panel content */
+    .content{ padding: 0 18px 18px; overflow: hidden; height: 0; }
+    details[open] .content{ height: auto; }
+
+    /* typography */
+    h1{ margin: 0 0 12px; }
+    p{ margin: 0 0 10px; color: var(--muted); }
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    ul{ margin: 8px 0 0 18px; color: var(--muted); }
+
+    /* reveal-on-scroll */
+    .reveal{ opacity:0; transform: translateY(12px); will-change: transform, opacity; }
+    .reveal.in{ opacity:1; transform: none; transition: opacity var(--speed) ease, transform var(--speed) ease; }
+
+    /* iframe/pdf styling */
+    .pdf{ width:100%; min-height:70vh; border: none; border-radius: 12px; background: #222; }
+
+    footer{ color: var(--muted); font-size: 14px; padding: 14px; text-align:center; }
+
+    /* reduce motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .icon, .reveal{ transition: none !important; transform: none !important; }
+      html{ scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap reveal">
+    <header>
+      <div class="icons">
+        <!-- Replace # with your links -->
+        <a class="icon" aria-label="LinkedIn" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zM8.5 8h3.8v2.2h.06c.53-1 1.82-2.2 3.75-2.2 4 0 4.74 2.63 4.74 6.06V24h-4v-7.1c0-1.7 0-3.88-2.36-3.88s-2.72 1.85-2.72 3.76V24h-4V8z"/></svg>
+        </a>
+        <a class="icon" aria-label="GitHub" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.86 3.15 8.98 7.5 10.43.55.1.75-.24.75-.54v-2.02c-3.05.66-3.7-1.3-3.7-1.3-.5-1.26-1.22-1.6-1.22-1.6-1-.68.07-.67.07-.67 1.1.08 1.67 1.15 1.67 1.15.98 1.67 2.57 1.18 3.2.9.1-.7.4-1.18.73-1.46-2.44-.28-5-1.22-5-5.43 0-1.2.43-2.18 1.14-2.95-.12-.28-.5-1.42.1-2.95 0 0 .94-.3 3.09 1.13A10.7 10.7 0 0 1 12 6.8c.95 0 1.9.13 2.8.37 2.15-1.44 3.09-1.14 3.09-1.14.6 1.53.22 2.67.11 2.95.72.77 1.14 1.75 1.14 2.95 0 4.22-2.57 5.14-5.01 5.41.41.36.78 1.08.78 2.19v3.24c0 .3.2.64.76.53A10.99 10.99 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"/></svg>
+        </a>
+        <a class="icon" aria-label="Email" href="mailto:you@example.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13 0 6V4l12 7L24 4v2l-12 7z"/></svg>
+        </a>
+      </div>
+      <div class="name">William Winterflood</div>
+    </header>
+
+    <main class="card">
+      <details class="reveal" open>
+        <summary>About me</summary>
+        <div class="content">
+          <p>Short intro about who you are and what you do. Keep it crisp and outcome‑focused.</p>
+        </div>
+      </details>
+
+      <details class="reveal">
+        <summary>Projects</summary>
+        <div class="content">
+          <ul>
+            <li><a href="#">Project One</a> – one sentence on impact.</li>
+            <li><a href="#">Project Two</a> – what it does and tech used.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="reveal">
+        <summary>Technical Skills</summary>
+        <div class="content">
+          <p>Python, JavaScript, C/C++, SQL, React, Node, Git, Linux…</p>
+        </div>
+      </details>
+
+      <details class="reveal">
+        <summary>CV</summary>
+        <div class="content">
+          <!-- Replace src with your hosted PDF (e.g., /cv.pdf or a Google Drive "preview" link) -->
+          <iframe class="pdf" title="CV PDF preview" src="WWCV.pdf"></iframe>
+          <p style="margin-top:10px">Prefer a download? <a href="WWCV.pdf" download>Get the PDF</a>.</p>
+        </div>
+      </details>
+
+      <details class="reveal">
+        <summary>Contact</summary>
+        <div class="content">
+          <p>Email: <a href="mailto:you@example.com">williamwinterflood@outlook.com</a> · LinkedIn / GitHub links above.</p>
+        </div>
+      </details>
+    </main>
+
+    <footer class="reveal">© <span id="y"></span> William Winterflood</footer>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Reveal-on-scroll using IntersectionObserver (no libraries)
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Smooth open/close animation for <details>
+    const animateDetails = (details) => {
+      const content = details.querySelector('.content');
+      if(!content) return;
+      const isOpening = details.open;
+      const start = isOpening ? 0 : content.scrollHeight;
+      const end   = isOpening ? content.scrollHeight : 0;
+      content.style.height = start + 'px';
+      content.getBoundingClientRect(); // force reflow
+      content.style.transition = `height var(--speed) ease`;
+      content.style.height = end + 'px';
+      const done = () => { content.style.transition = ''; content.style.height = isOpening ? 'auto' : '0px'; content.removeEventListener('transitionend', done); };
+      content.addEventListener('transitionend', done);
+    };
+
+    document.querySelectorAll('details').forEach(d => {
+      // initialize heights for closed ones
+      if(!d.open){ const c = d.querySelector('.content'); if(c){ c.style.height = '0px'; } }
+      d.addEventListener('toggle', () => animateDetails(d));
+    });
+  </script>
+</body>
+</html>
